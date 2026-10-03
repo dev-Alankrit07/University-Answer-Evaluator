@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://127.0.0.1:5000/api";
+const API_BASE_URL = "https://university-answer-evaluator-backend.onrender.com/api";
 
 const STORAGE_KEYS = {
   token: "authToken",
@@ -63,7 +63,14 @@ function toTitleCase(value) {
     return "User";
   }
 
-  return String(value).split(" ").filter(Boolean).map((part) => part.charAt(0).toUpperCase() + part.slice(1)).join(" ");
+  return String(value)
+    .split(" ")
+    .filter(Boolean)
+    .map(
+      (part) =>
+        part.charAt(0).toUpperCase() + part.slice(1)
+    )
+    .join(" ");
 }
 
 function getErrorMessage(data, statusCode) {
@@ -88,7 +95,12 @@ function getErrorMessage(data, statusCode) {
   }
 
   if (data && typeof data === "object") {
-    const message = data.message || data.error || data.detail || data.msg;
+    const message =
+      data.message ||
+      data.error ||
+      data.detail ||
+      data.msg;
+
     if (message) {
       return String(message);
     }
@@ -102,7 +114,11 @@ function getErrorMessage(data, statusCode) {
 }
 
 async function apiRequest(endpoint, options = {}) {
-  const normalizedEndpoint = endpoint.startsWith("http") ? endpoint : `${API_BASE_URL}${endpoint.startsWith("/") ? endpoint : `/${endpoint}`}`;
+  const normalizedEndpoint = endpoint.startsWith("http")
+    ? endpoint
+    : `${API_BASE_URL}${
+        endpoint.startsWith("/") ? endpoint : `/${endpoint}`
+      }`;
 
   const headers = new Headers(options.headers || {});
   const token = getAuthToken();
@@ -112,7 +128,13 @@ async function apiRequest(endpoint, options = {}) {
   }
 
   const isFormData = options.body instanceof FormData;
-  if (!isFormData && options.body !== undefined && !headers.has("Content-Type") && !(options.body instanceof URLSearchParams)) {
+
+  if (
+    !isFormData &&
+    options.body !== undefined &&
+    !headers.has("Content-Type") &&
+    !(options.body instanceof URLSearchParams)
+  ) {
     headers.set("Content-Type", "application/json");
   }
 
@@ -123,7 +145,8 @@ async function apiRequest(endpoint, options = {}) {
     });
 
     let payload = null;
-    const contentType = response.headers.get("content-type") || "";
+    const contentType =
+      response.headers.get("content-type") || "";
 
     if (contentType.includes("application/json")) {
       payload = await response.json().catch(() => null);
@@ -132,13 +155,17 @@ async function apiRequest(endpoint, options = {}) {
     }
 
     if (!response.ok) {
-      throw new Error(getErrorMessage(payload, response.status));
+      throw new Error(
+        getErrorMessage(payload, response.status)
+      );
     }
 
     return payload;
   } catch (error) {
     if (error instanceof TypeError) {
-      throw new Error("Unable to connect to Flask server. Make sure the backend is running on port 5000.");
+      throw new Error(
+        "Unable to connect to the Flask server. Please try again."
+      );
     }
 
     throw error;
@@ -154,7 +181,10 @@ async function uploadPdf(endpoint, file, evaluationId) {
   formData.append("file", file, file.name);
 
   if (evaluationId) {
-    formData.append("evaluation_id", String(evaluationId));
+    formData.append(
+      "evaluation_id",
+      String(evaluationId)
+    );
   }
 
   const token = getAuthToken();
@@ -164,14 +194,20 @@ async function uploadPdf(endpoint, file, evaluationId) {
     headers.set("Authorization", `Bearer ${token}`);
   }
 
-  const response = await fetch(`${API_BASE_URL}${endpoint.startsWith("/") ? endpoint : `/${endpoint}`}`, {
-    method: "POST",
-    headers,
-    body: formData
-  });
+  const response = await fetch(
+    `${API_BASE_URL}${
+      endpoint.startsWith("/") ? endpoint : `/${endpoint}`
+    }`,
+    {
+      method: "POST",
+      headers,
+      body: formData
+    }
+  );
 
   let payload = null;
-  const contentType = response.headers.get("content-type") || "";
+  const contentType =
+    response.headers.get("content-type") || "";
 
   if (contentType.includes("application/json")) {
     payload = await response.json().catch(() => null);
@@ -180,7 +216,9 @@ async function uploadPdf(endpoint, file, evaluationId) {
   }
 
   if (!response.ok) {
-    throw new Error(getErrorMessage(payload, response.status));
+    throw new Error(
+      getErrorMessage(payload, response.status)
+    );
   }
 
   return payload;
