@@ -11,6 +11,33 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+async function requestLogin(email, password) {
+  const response = await fetch(`${API_BASE_URL}/auth/login`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password })
+  });
+  const payload = await response.json().catch(() => null);
+
+  if (!response.ok) {
+    const accountNotFoundMessage = "Please register first.";
+    if (response.status === 404 || payload?.message === accountNotFoundMessage) {
+      throw new Error(accountNotFoundMessage);
+    }
+
+    if (response.status === 401) {
+      const message = payload?.message;
+      throw new Error(message && message !== "Your session has expired. Please login again."
+        ? message
+        : "Invalid email or password.");
+    }
+
+    throw new Error(payload?.message || "Login failed. Please try again.");
+  }
+
+  return payload;
+}
+
 async function handleLoginSubmit(event) {
   event.preventDefault();
 
@@ -35,10 +62,7 @@ async function handleLoginSubmit(event) {
   setStatusMessage(messageBox, "info", "Logging in...");
 
   try {
-    const response = await apiRequest("/auth/login", {
-      method: "POST",
-      body: JSON.stringify({ email, password })
-    });
+    const response = await requestLogin(email, password);
 
     const user = response.user || response.data?.user || response.data || {};
     const token = response.token || response.access_token || response.data?.token || response.session?.token;
@@ -52,7 +76,22 @@ async function handleLoginSubmit(event) {
     setStatusMessage(messageBox, "success", "Login successful. Redirecting...");
     window.location.href = "dashboard.html";
   } catch (error) {
-    setStatusMessage(messageBox, "error", error.message || "Login failed. Please try again.");
+    if (error.message === "Please register first.") {
+      setStatusMessage(messageBox, "error", "Please register first.");
+      const registerLink = document.createElement("a");
+      registerLink.href = "register.html";
+      registerLink.className = "primary-btn";
+      registerLink.textContent = "Register Now";
+      registerLink.style.display = "inline-block";
+      registerLink.style.marginTop = "0.5rem";
+      messageBox.append(document.createElement("br"), registerLink);
+    } else {
+      const message = error instanceof TypeError
+        ? "Unable to connect to the Flask server. Please try again."
+        : error.message || "Login failed. Please try again.";
+      setStatusMessage(messageBox, "error", message);
+    }
+
     if (loginBtn) {
       loginBtn.disabled = false;
     }

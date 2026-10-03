@@ -74,6 +74,10 @@ function toTitleCase(value) {
 }
 
 function getErrorMessage(data, statusCode) {
+  if (statusCode === 404 && data?.message === "Please register first.") {
+    return data.message;
+  }
+
   if (statusCode === 400) {
     return "Bad request. Please check your input and try again.";
   }

@@ -94,7 +94,7 @@ def login():
     try:
         user = conn.execute("SELECT * FROM users WHERE email = ?", (email,)).fetchone()
         if not user:
-            return jsonify({"success": False, "message": "Invalid email or password."}), 401
+            return jsonify({"success": False, "message": "Please register first."}), 404
 
         if not check_password_hash(user["password_hash"], password):
             return jsonify({"success": False, "message": "Invalid email or password."}), 401
