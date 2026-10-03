@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Results | University Answer Evaluator</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand-block">
+          <div class="brand-mark">UAE</div>
+          <div>
+            <h2>Answer Evaluator</h2>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav" aria-label="Main">
+          <a href="dashboard.html" class="nav-item" data-page="dashboard">Dashboard</a>
+          <a href="create-evaluation.html" class="nav-item" data-page="create-evaluation">New Evaluation</a>
+          <a href="history.html" class="nav-item" data-page="history">History</a>
+          <a href="profile.html" class="nav-item" data-page="profile">Profile</a>
+        </nav>
+
+        <button id="logoutBtn" class="logout-btn" type="button">Logout</button>
+      </aside>
+
+      <div class="main-panel">
+        <header class="topbar">
+          <h1>University Answer Evaluator</h1>
+          <a href="profile.html" class="profile-link" aria-label="Open profile">
+            <span id="profileAvatar" class="avatar">U</span>
+          </a>
+        </header>
+
+        <main class="content-area results-page">
+          <section class="card results-header-card">
+            <div>
+              <p class="eyebrow">Evaluation</p>
+              <h2 id="resultTitle">Evaluation Results</h2>
+            </div>
+            <div class="result-meta">
+              <span id="resultSubject">Subject</span>
+              <span id="resultSemester">Semester</span>
+            </div>
+          </section>
+
+          <section class="stats-grid">
+            <article class="stat-card card">
+              <p>Marks Obtained</p>
+              <h3 id="marksObtained">0</h3>
+            </article>
+            <article class="stat-card card">
+              <p>Maximum Marks</p>
+              <h3 id="maximumMarks">0</h3>
+            </article>
+            <article class="stat-card card">
+              <p>Percentage</p>
+              <h3 id="percentageScore">0%</h3>
+            </article>
+            <article class="stat-card card">
+              <p>Status</p>
+              <h3 id="resultStatus">Pending</h3>
+            </article>
+          </section>
+
+          <section class="card table-card">
+            <div class="section-header">
+              <h3>Question-wise Results</h3>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Question</th>
+                    <th>Maximum Marks</th>
+                    <th>Obtained Marks</th>
+                    <th>Status</th>
+                    <th>Feedback</th>
+                  </tr>
+                </thead>
+                <tbody id="resultsTableBody">
+                  <tr>
+                    <td colspan="5" class="empty-state">Loading results...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/results.js"></script>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Answers | University Answer Evaluator</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/evaluation.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand-block">
+          <div class="brand-mark">UAE</div>
+          <div>
+            <h2>Answer Evaluator</h2>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav" aria-label="Main">
+          <a href="dashboard.html" class="nav-item" data-page="dashboard">Dashboard</a>
+          <a href="create-evaluation.html" class="nav-item" data-page="create-evaluation">New Evaluation</a>
+          <a href="history.html" class="nav-item" data-page="history">History</a>
+          <a href="profile.html" class="nav-item" data-page="profile">Profile</a>
+        </nav>
+
+        <button id="logoutBtn" class="logout-btn" type="button">Logout</button>
+      </aside>
+
+      <div class="main-panel">
+        <header class="topbar">
+          <h1>University Answer Evaluator</h1>
+          <a href="profile.html" class="profile-link" aria-label="Open profile">
+            <span id="profileAvatar" class="avatar">U</span>
+          </a>
+        </header>
+
+        <main class="content-area">
+          <section class="card form-card upload-card">
+            <div class="page-heading">
+              <p class="eyebrow">Evaluation Workflow</p>
+              <h2>Upload Student Answer Script</h2>
+            </div>
+
+            <p class="helper-text">Upload the student's completed answer script PDF.</p>
+
+            <div class="upload-form">
+              <div class="field-group">
+                <label for="studentAnswersFile">PDF File</label>
+                <input id="studentAnswersFile" type="file" accept="application/pdf" />
+              </div>
+
+              <button id="uploadStudentAnswersBtn" type="button" class="primary-btn" disabled>Upload Student Answers</button>
+              <div id="studentAnswersMessage" class="form-message" aria-live="polite"></div>
+            </div>
+
+            <div class="next-step-block">
+              <button id="compareAnswersBtn" type="button" class="success-btn" disabled>COMPARE ANSWERS</button>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/evaluation.js"></script>
+  </body>
+</html>

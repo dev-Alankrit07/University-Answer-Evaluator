@@ -1,0 +1,19 @@
+.auth-body {
+  background: linear-gradient(135deg, #edf4ff 0%, #f4f7fb 100%);
+}
+
+.auth-card {
+  padding: 2rem;
+}
+
+.auth-header {
+  margin-bottom: 1.5rem;
+}
+
+.auth-form {
+  margin-top: 1.2rem;
+}
+
+.auth-form .field-group input {
+  width: 100%;
+}

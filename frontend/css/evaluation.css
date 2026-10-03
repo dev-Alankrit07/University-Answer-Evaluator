@@ -1,0 +1,38 @@
+.form-card,
+.processing-card {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.upload-card {
+  padding: 2rem;
+}
+
+.helper-text {
+  margin: 0 0 1.2rem;
+  color: var(--muted);
+}
+
+input[type="file"] {
+  background: #fff;
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.next-step-block {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.processing-card {
+  padding: 2rem;
+}
+
+.processing-steps {
+  margin-top: 1.5rem;
+}
+
+.success-btn {
+  width: 100%;
+}

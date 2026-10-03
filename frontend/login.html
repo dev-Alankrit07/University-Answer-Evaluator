@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | University Answer Evaluator</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/auth.css" />
+  </head>
+  <body class="auth-body">
+    <div class="auth-shell">
+      <div class="auth-card">
+        <div class="auth-header">
+          <span class="auth-badge">University</span>
+          <h1>Welcome Back</h1>
+          <p>Login to continue evaluation</p>
+        </div>
+
+        <form id="loginForm" class="auth-form" novalidate>
+          <div class="field-group">
+            <label for="loginEmail">Email</label>
+            <input id="loginEmail" name="email" type="email" placeholder="Enter your email" required />
+          </div>
+
+          <div class="field-group">
+            <label for="loginPassword">Password</label>
+            <input id="loginPassword" name="password" type="password" placeholder="Enter your password" required />
+          </div>
+
+          <button type="submit" id="loginBtn" class="primary-btn full-width">Login</button>
+          <div id="loginMessage" class="form-message" aria-live="polite"></div>
+        </form>
+
+        <p class="auth-switch">
+          Don’t have an account?
+          <a href="register.html">Register</a>
+        </p>
+      </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+  </body>
+</html>

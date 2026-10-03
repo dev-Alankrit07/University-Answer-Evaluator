@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Environment / secrets
+.env
+.env.*
+
+# SQLite database
+backend/database.db
+backend/*.db
+*.sqlite
+*.sqlite3
+
+# Uploaded files
+backend/uploads/
+frontend/uploads/
+
+# Generated reports
+backend/reports/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Temporary files
+*.tmp
+*.temp
+
+# Test/cache files
+.pytest_cache/
+.coverage
+htmlcov/

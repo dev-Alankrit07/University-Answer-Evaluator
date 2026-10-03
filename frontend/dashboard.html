@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | University Answer Evaluator</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand-block">
+          <div class="brand-mark">UAE</div>
+          <div>
+            <h2>Answer Evaluator</h2>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav" aria-label="Main">
+          <a href="dashboard.html" class="nav-item active" data-page="dashboard">Dashboard</a>
+          <a href="create-evaluation.html" class="nav-item" data-page="create-evaluation">New Evaluation</a>
+          <a href="history.html" class="nav-item" data-page="history">History</a>
+          <a href="profile.html" class="nav-item" data-page="profile">Profile</a>
+        </nav>
+
+        <button id="logoutBtn" class="logout-btn" type="button">Logout</button>
+      </aside>
+
+      <div class="main-panel">
+        <header class="topbar">
+          <h1>University Answer Evaluator</h1>
+          <a href="profile.html" class="profile-link" aria-label="Open profile">
+            <span id="profileAvatar" class="avatar">U</span>
+          </a>
+        </header>
+
+        <main class="content-area dashboard-page">
+          <section class="welcome-panel card">
+            <div>
+              <p class="eyebrow">Overview</p>
+              <h2 id="dashboardWelcome">Welcome back, User</h2>
+            </div>
+            <a href="create-evaluation.html" class="primary-btn">New Evaluation</a>
+          </section>
+
+          <section class="stats-grid">
+            <article class="stat-card card">
+              <p>Total Evaluations</p>
+              <h3 id="totalEvaluations">0</h3>
+            </article>
+            <article class="stat-card card">
+              <p>Completed</p>
+              <h3 id="completedEvaluations">0</h3>
+            </article>
+            <article class="stat-card card">
+              <p>Pending</p>
+              <h3 id="pendingEvaluations">0</h3>
+            </article>
+            <article class="stat-card card">
+              <p>Average Score</p>
+              <h3 id="averageScore">0%</h3>
+            </article>
+          </section>
+
+          <section class="card table-card">
+            <div class="section-header">
+              <h3>Recent Evaluations</h3>
+            </div>
+
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Examination</th>
+                    <th>Subject</th>
+                    <th>Semester</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Score</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="recentEvaluationsTableBody">
+                  <tr>
+                    <td colspan="7" class="empty-state">No evaluations yet.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+  </body>
+</html>

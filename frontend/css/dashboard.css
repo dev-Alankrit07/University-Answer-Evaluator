@@ -1,0 +1,26 @@
+.dashboard-page {
+  display: block;
+}
+
+.results-page .results-header-card {
+  background: #fff;
+}
+
+.table-card {
+  overflow: hidden;
+}
+
+.action-btn {
+  border: none;
+}
+
+.review-input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.review-table td {
+  vertical-align: top;
+}

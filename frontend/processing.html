@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Processing | University Answer Evaluator</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/evaluation.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand-block">
+          <div class="brand-mark">UAE</div>
+          <div>
+            <h2>Answer Evaluator</h2>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav" aria-label="Main">
+          <a href="dashboard.html" class="nav-item" data-page="dashboard">Dashboard</a>
+          <a href="create-evaluation.html" class="nav-item" data-page="create-evaluation">New Evaluation</a>
+          <a href="history.html" class="nav-item" data-page="history">History</a>
+          <a href="profile.html" class="nav-item" data-page="profile">Profile</a>
+        </nav>
+
+        <button id="logoutBtn" class="logout-btn" type="button">Logout</button>
+      </aside>
+
+      <div class="main-panel">
+        <header class="topbar">
+          <h1>University Answer Evaluator</h1>
+          <a href="profile.html" class="profile-link" aria-label="Open profile">
+            <span id="profileAvatar" class="avatar">U</span>
+          </a>
+        </header>
+
+        <main class="content-area">
+          <section class="card processing-card">
+            <div class="page-heading">
+              <p class="eyebrow">Processing</p>
+              <h2>Processing Evaluation</h2>
+            </div>
+
+            <div class="processing-steps" id="processingSteps">
+              <div class="step done">✓ Reading Answer Key</div>
+              <div class="step done">✓ Extracting Student Answers</div>
+              <div class="step active">→ Comparing Answers</div>
+              <div class="step pending">→ Calculating Marks</div>
+              <div class="step pending">→ Saving Results</div>
+            </div>
+
+            <div id="processingMessage" class="processing-message">Processing the uploaded documents.</div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/evaluation.js"></script>
+  </body>
+</html>
